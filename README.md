@@ -8,6 +8,12 @@ Messages are stored in a JSON database and encrypted before saving.
 
 Participants must identify bugs and security issues in the system.
 
+### Screenshots of API Testing
+
+![List](/screenshots/list_messages.png)
+![Create](/screenshots/create_message.png)
+![Delete](/screenshots/delete_message.png)
+
 ---
 
 # System Flow
