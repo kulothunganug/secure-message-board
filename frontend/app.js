@@ -2,13 +2,16 @@ async function create() {
   const title = document.getElementById("title").value;
   const secret = document.getElementById("secret").value;
 
-  await fetch("/api/create", {
+  const res = await fetch("/api/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ title, secret }),
   });
+  const data = await res.json();
+
+  alert(data.message);
 
   load();
 }
