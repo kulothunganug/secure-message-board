@@ -1,17 +1,14 @@
-const fs=require("fs")
+const fs = require("fs");
 
-exports.readData=function(path){
+exports.readData = function (path) {
+  const raw = fs.readFileSync(path);
 
-const raw=fs.readFileSync(path)
+  return JSON.parse(raw);
+};
 
-return JSON.parse(raw)
+exports.writeData = function (path, data) {
+  fs.writeFile(path, JSON.stringify(data, null, 2), (err) => {
+    if (err) console.log(err);
+  });
+};
 
-}
-
-exports.writeData=function(path,data){
-
-fs.writeFile(path,JSON.stringify(data,null,2),(err)=>{
-if(err) console.log(err)
-})
-
-}

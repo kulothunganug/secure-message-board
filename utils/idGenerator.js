@@ -1,5 +1,4 @@
-module.exports=function(list){
+module.exports = function (list) {
+  return list.length + 1;
+};
 
-return list.length+1
-
-}

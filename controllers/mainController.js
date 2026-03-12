@@ -5,7 +5,7 @@ exports.create = (req, res) => {
   res.json(item);
 };
 
-exports.list = (req, res) => {
+exports.list = (_, res) => {
   const data = service.list();
   res.json(data);
 };
@@ -14,4 +14,3 @@ exports.remove = (req, res) => {
   service.remove(req.params.id);
   res.json({ message: "deleted" });
 };
-
