@@ -7,7 +7,7 @@ exports.create = function (data) {
   const list = readData(FILE);
 
   const exists = list.some((item) => item.title === data.title);
-  if (exists) return;
+  if (exists) return null;
 
   const item = {
     id: crypto.randomUUID(),

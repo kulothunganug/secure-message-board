@@ -2,7 +2,13 @@ const service = require("../services/mainService");
 
 exports.create = (req, res) => {
   const item = service.create(req.body);
-  res.json(item);
+
+  if (item === null) {
+    res.json({ message: "Message already exists" });
+    return;
+  }
+
+  res.json({ message: "Message added successfully" });
 };
 
 exports.list = (_, res) => {
