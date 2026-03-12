@@ -7,6 +7,9 @@ const FILE = "data/data.json";
 exports.create = function (data) {
   const list = readData(FILE);
 
+  const exists = list.some((item) => item.title === data.title);
+  if (exists) return;
+
   const item = {
     id: idGen(list),
     title: data.title,
@@ -31,4 +34,3 @@ exports.remove = function (id) {
 
   writeData(FILE, newList);
 };
-
