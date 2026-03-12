@@ -1,14 +1,36 @@
-body{
-font-family:Arial;
-margin:40px;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-input{
-display:block;
-margin:10px 0;
-padding:8px;
+body {
+  font-family: Arial;
+  margin: 40px;
 }
 
-button{
-padding:10px;
+input {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
 }
+
+button {
+  padding: 4px;
+}
+
+#list {
+  margin-top: 10px;
+}
+
+.messages-label {
+  font-size: 1.4rem;
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+
+.message-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
