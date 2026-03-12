@@ -1,21 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<title>Hackathon App</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <title>Hackathon App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Hackathon Debug App</h1>
 
-<h1>Hackathon Debug App</h1>
+    <input id="title" placeholder="title" />
+    <input id="secret" placeholder="secret" />
 
-<input id="title" placeholder="title">
-<input id="secret" placeholder="secret">
+    <button onclick="create()">Create</button>
 
-<button onclick="create()">Create</button>
+    <div id="list"></div>
 
-<div id="list"></div>
-
-<script src="app.js"></script>
-
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>

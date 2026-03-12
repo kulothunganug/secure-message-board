@@ -1,37 +1,34 @@
-const {readData,writeData}=require("../utils/fileStorage")
-const idGen=require("../utils/idGenerator")
-const cryptoService=require("./cryptoService")
+const { readData, writeData } = require("../utils/fileStorage");
+const idGen = require("../utils/idGenerator");
+const cryptoService = require("./cryptoService");
 
-const FILE="data/data.json"
+const FILE = "data/data.json";
 
-exports.create=function(data){
+exports.create = function (data) {
+  const list = readData(FILE);
 
-const list=readData(FILE)
+  const item = {
+    id: idGen(list),
+    title: data.title,
+    secret: cryptoService.encrypt(data.secret),
+  };
 
-const item={
-id:idGen(list),
-title:data.title,
-secret:cryptoService.encrypt(data.secret)
-}
+  list.push(item);
 
-list.push(item)
+  writeData(FILE, list);
 
-writeData(FILE,list)
+  return item;
+};
 
-return item
+exports.list = function () {
+  return readData(FILE);
+};
 
-}
+exports.remove = function (id) {
+  const list = readData(FILE);
 
-exports.list=function(){
-return readData(FILE)
-}
+  const newList = list.filter((i) => i.id != id);
 
-exports.remove=function(id){
+  writeData(FILE, newList);
+};
 
-const list=readData(FILE)
-
-const newList=list.filter(i=>i.id!=id)
-
-writeData(FILE,newList)
-
-}
