@@ -23,9 +23,19 @@ async function load() {
   container.innerHTML = "";
 
   data.forEach((d) => {
-    container.innerHTML += `<p>${d.title}</p>`;
+    container.innerHTML += `<div><p>${d.title}</p><button onClick={deleteData(${d.id})}>Del</button></div>`;
   });
 }
 
-load();
+async function deleteData(id) {
+  await fetch(`/api/delete/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
+  load();
+}
+
+load();
