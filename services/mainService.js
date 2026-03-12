@@ -1,5 +1,4 @@
 const { readData, writeData } = require("../utils/fileStorage");
-const idGen = require("../utils/idGenerator");
 const cryptoService = require("./cryptoService");
 
 const FILE = "data/data.json";
@@ -11,7 +10,7 @@ exports.create = function (data) {
   if (exists) return;
 
   const item = {
-    id: idGen(list),
+    id: crypto.randomUUID(),
     title: data.title,
     secret: cryptoService.encrypt(data.secret),
   };

@@ -18,4 +18,3 @@ exports.encrypt = function (text) {
   // };
   return encrypted;
 };
-
