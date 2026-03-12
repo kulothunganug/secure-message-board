@@ -23,16 +23,29 @@ async function load() {
   container.innerHTML = "";
 
   data.forEach((d) => {
-    container.innerHTML += `<div><p>${d.title}</p><button onClick={deleteData(${d.id})}>Del</button></div>`;
+    const wrapper = document.createElement("div");
+    wrapper.className = "message-item";
+
+    const p = document.createElement("p");
+    p.textContent = d.title;
+
+    const btn = document.createElement("button");
+    btn.textContent = "Del";
+
+    btn.addEventListener("click", () => {
+      deleteData(d.id);
+    });
+
+    wrapper.appendChild(p);
+    wrapper.appendChild(btn);
+
+    container.appendChild(wrapper);
   });
 }
 
 async function deleteData(id) {
   await fetch(`/api/delete/${id}`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
   });
 
   load();
