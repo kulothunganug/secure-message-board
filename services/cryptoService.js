@@ -1,15 +1,21 @@
-const crypto=require("crypto")
+const crypto = require("crypto");
 
-const key="hardcodedkey"
+const algorithm = "aes-256-cbc";
 
-exports.encrypt=function(text){
+const key = crypto.createHash("sha256").update("hard-coded-key").digest();
 
-const cipher=crypto.createCipher("aes-256-cbc",key)
+const iv = crypto.randomBytes(16);
 
-let encrypted=cipher.update(text,"utf8","hex")
+exports.encrypt = function (text) {
+  const cipher = crypto.createCipheriv(algorithm, key, iv);
 
-encrypted+=cipher.final("hex")
+  let encrypted = cipher.update(text, "utf8", "hex");
+  encrypted += cipher.final("hex");
 
-return encrypted
+  // return {
+  //   iv: iv.toString("hex"),
+  //   content: encrypted,
+  // };
+  return encrypted;
+};
 
-}
